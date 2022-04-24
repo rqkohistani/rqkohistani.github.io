@@ -14,6 +14,9 @@
 
 ## More infos check out below links
 
+
+## [Github pages docs](https://docs.github.com/en/pages)
+
 ## [Github Pages](https://pages.github.com/)
 
 ## [evanca](https://github.com/evanca/quick-portfolio)
