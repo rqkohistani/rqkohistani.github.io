@@ -4,7 +4,7 @@
 
 With passion to learn and undertake new challenges.
 
-### Bachelor of Technology - [Linnaeus University](https://lnu.se/en/programme/software-technology-programme/vaxjo-international-autumn/)
+### Bachelor of Technology - [Linnaeus University](https://lnu.se)
 
 ## Private Projects
 
