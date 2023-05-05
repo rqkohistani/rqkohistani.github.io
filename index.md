@@ -17,8 +17,7 @@ With passion to learn and undertake new challenges.
 &#10148; **Lorem Ipsum** is simply dummy text of the printing and typesetting industry.
 
 ## Websites Frondend
-
-&#10148; [unicode table]([https://unicode-table.com/en/27A4/](https://comingtemplate.netlify.app/)) (2023) ComingSoon Template.
+&#10148; [Coming soon template](https://comingtemplate.netlify.app/)
 
 &#10148; [unicode table](https://unicode-table.com/en/27A4/) (2021) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 
