@@ -6,9 +6,8 @@ With passion to learn and undertake new challenges.
 
 ### Bachelor of Technology - [Linnaeus University](https://lnu.se)
 
-## Private Projects
 
-### Backend projects
+## Backend projects
 
 &#10148; [REST APIs USIG PRISMA ORM](https://github.com/rqkohistani/Nodejs-REST-APIs-part-three-USING-PRISMA)
 
@@ -16,7 +15,7 @@ With passion to learn and undertake new challenges.
 
 &#10148; **Lorem Ipsum** is simply dummy text of the printing and typesetting industry.
 
-## Websites Frondend
+##  Frontend
 &#10148; [Coming soon template](https://comingtemplate.netlify.app/)
 
 &#10148; [unicode table](https://unicode-table.com/en/27A4/) (2021) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
