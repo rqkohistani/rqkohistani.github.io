@@ -7,6 +7,7 @@ With a passion to learn and undertake new challenges, I've embarked on a journey
 ### Bachelor of Technology - [Linnaeus University](https://lnu.se)
 
 &#10148; 2018 - September 2021
+
 Key coursework: Algorithms and Advanced Data Structures (Java), Web Programming (JavaScript), Server-Based Web Programming (ExpressJS), Database Management Systems (DBMS), and more.
 
 ## GitHub repositories
