@@ -14,7 +14,7 @@ Key coursework: Algorithms and Advanced Data Structures (Java), Web Programming 
 
 Here are my projects, showcasing my skills. These repositories reflect my commitment to enhancing user experiences and operational efficiency through innovative solutions.
 
-&#10148; [GitHub repos]((https://github.com/rqkohistani)
+&#10148; [GitHub repos](https://github.com/rqkohistani)
 
 <!--
 &#10148; **Lorem Ipsum** is simply dummy text of the printing and typesetting industry.
