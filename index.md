@@ -1,6 +1,6 @@
 # Welcome to my Github.io
 
-## Software developer @[Softhouse](www.softhouse.se)
+## Software Engineer consultant @[IKEA OF SWEDEN](#)
 
 With a passion to learn and undertake new challenges, I've embarked on a journey in software development, exploring both backend and frontend technologies. My curiosity and drive for continuous improvement fuel my work.
 
