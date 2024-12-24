@@ -141,7 +141,16 @@
         margin-bottom: 0.5em;
         min-height: 2em;
       }
+      /* 1) Another color for h6 */
+      h6 {
+        color: #12f4707f; /* e.g., orange */
+      }
 
+      /* 2) Bold + different color for the highlighted words/phrases */
+      .highlight {
+        font-weight: bold;
+        color: #00ff007f; /* e.g., light blue */
+      }
       /* Responsive breakpoints */
       @media (max-width: 1000px) {
         .right-fixed {
@@ -155,10 +164,19 @@
         .left-fixed {
           display: none;
         }
+        /* Override center-scrolling margins for mobile */
         .center-scrolling {
+          margin: 0; /* remove left/right margin so it’s not floating */
+          padding: 1em; /* optional: keep some padding for readability */
+        }
+
+        /* Remove/adjust list indentation on mobile */
+        ul {
           margin-left: 0;
+          padding-left: 1em; /* or 0, if you want it fully flush against the edge */
         }
       }
+
       /* Optionally hide the typewriter title on smaller screens */
       @media (max-width: 1025px) {
         .top-nav .title {
@@ -232,16 +250,16 @@
 
     <!-- CENTER COLUMN -->
     <div class="center-scrolling">
-      <h1 id="profile-summary">Hi! I'm Rashed Qazizada.</h1>
+      <h1 id="profile-summary">Hey there! I'm Rashed Qazizada.</h1>
       <p>
-        Welcome to my personal site, featuring pinned side columns and a
-        scrollable center.
+        This is my CV and an overview of my professional experiences—feel free
+        to explore my background and projects!
       </p>
       <hr />
       <h2>Profile Summary</h2>
       <p>
-        I'm an enthusiastic and dedicated software developer with over 3 years
-        of experience in backend and full-stack development. Skilled in
+        I'm an enthusiastic and dedicated software engineer with over 3 years of
+        experience in backend and full-stack development. Skilled in
         <strong>ASP.NET</strong>, <strong>Node.js</strong>,
         <strong>SQL</strong>, and <strong>PL/SQL</strong>, I thrive in agile
         environments and am continually expanding my technical expertise. With a
@@ -253,7 +271,12 @@
       <hr />
       <h2 id="top-skills">Top Skills</h2>
       <ul>
-        <li>Node.js (JavaScript), ASP.NET, PL/SQL Database, RESTful APIs</li>
+        <li>
+          <strong class="highlight">Node.js</strong> (JavaScript),
+          <strong class="highlight"
+            >ASP.NET, PL/SQL Database, RESTful APIs</strong
+          >
+        </li>
         <li>Team collaboration in agile/Scrum settings</li>
         <li>Passion for new technologies and innovations</li>
         <li>Proven bug fixes & system performance improvements</li>
@@ -262,18 +285,39 @@
       </ul>
       <hr />
       <h2 id="project-highlights">Project Highlights</h2>
-      <h3>Mar 2024 - Present: Framtiden AB | Consultant @IKEA</h3>
+      <h3>Mar 2024 - Present: Framtiden AB | Consultant</h3>
+      <h6>Client: Inter IKEA, Älmhult</h6>
       <ul>
-        <li>Developed/maintained labeling systems in .NET & SQL</li>
-        <li>Resolved critical bugs across PIA, LCI, RPI, etc.</li>
-        <li>Improved system stability and reliability significantly</li>
+        <li>
+          <strong class="highlight">Create Label Team:</strong> Working with
+          databases and .NET technologies to develop and maintain labeling
+          systems, ensuring continuous performance and reliability improvements
+        </li>
+        <li>
+          <strong class="highlight">Bug Fix Ownership:</strong>
+          Since joining, have identified and resolved bugs across a wide range
+          of systems—including, but not limited to, PIA, LCI, RPI,
+          LABEL-SERVICES, and various database-level issues—significantly
+          enhancing stability and reliability throughout the Label Domain
+        </li>
+        <li>
+          <strong class="highlight">Engage proactively</strong>
+          with cross-functional teams (e.g., architects, QA) to deliver robust
+          software solutions aligned with IKEA’s vision
+        </li>
+        <li>
+          <strong class="highlight">Focus:</strong>
+          Primarily working in ASP.NET (C#) for backend development and
+          SQL/PL-SQL for database tasks
+        </li>
       </ul>
 
       <h3>Dec 2023 – Feb 2024: Softhouse AB | Java Backend</h3>
       <ul>
         <li>Refined data structures & algorithms, focusing on performance</li>
       </ul>
-      <h3>Aug 2023 – Oct 2023: Go-Ahead Nordic (ASP.NET | Backend)</h3>
+      <h3>Aug 2023 – Oct 2023: Softhouse AB | ASP.NET | Backend Consultant</h3>
+      <h6>Client:Go-Ahead Nordic</h6>
       <ul>
         <li>
           Refactored data loads from EnTur to align with Go-Ahead’s product
@@ -284,15 +328,10 @@
           Handled data consolidation to enhance user experience on Go-Ahead
           platforms
         </li>
-        <li>
-          Tech stack highlights: Git, MS SQL Server, C#, ASP.NET 6.0,
-          OpenTripPlanner
-        </li>
       </ul>
 
-      <h3>
-        Sep 2022 - Jul 2023: World Baton & Intl. Baton Twirling Fed. (Node.js)
-      </h3>
+      <h3>Sep 2022 - Jul 2023: Softhouse AB | Nodejs | Backend Consultant</h3>
+      <h6>Client: World Baton & Intl. Baton Twirling Federation</h6>
       <ul>
         <li>
           Significantly upgraded the federation's scoring system—achieving a 98%
@@ -306,13 +345,10 @@
           Spearheaded technical development, ensuring project goals aligned with
           evolving competition needs
         </li>
-        <li>
-          Tech stack highlights: Prisma.io, xlsx-npm, Azure Database,
-          Express.js, Node.js, Socket.IO
-        </li>
       </ul>
 
-      <h3>May 2022 - Aug 2022: World Baton Twirling Fed. (Node.js)</h3>
+      <h3>May 2022 - Aug 2022: Softhouse AB | Nodejs | Backend | Consultant</h3>
+      <h6>Client: World Baton Federation</h6>
       <ul>
         <li>
           Led the development of an enhanced scoring system—focusing on accuracy
@@ -328,7 +364,11 @@
         </li>
       </ul>
 
-      <h3>Jan 2022 - Apr 2022: SW-development Sync Solution (ROL Ergo AB)</h3>
+      <h3>
+        Jan 2022 - Apr 2022: SW-development Sync Solution | Junior Nodejs
+        Consultant
+      </h3>
+      <h6>Client: ROL Ergo AB</h6>
       <ul>
         <li>
           Integrated two distinct booking systems (external platform + RIO) for
@@ -348,15 +388,32 @@
       <h3>Intermediate</h3>
       <ul>
         <li>
-          ASP.NET, C# programming, JavaScript, SQL (Oracle, MS SQL), PL/SQL
+          <strong class="highlight">Languages & Back-End:</strong>
+          ASP.NET, C# programming, Java, JavaScript, Node.js, Express.js, SQL
+          (Oracle, MS SQL), PL/SQL, Microsoft Azure Database, Prisma.io, OOP
+          (Object-Oriented Programming), Data Structures & Algorithms
         </li>
-        <li>RESTful APIs, Node.js, Express.js, Git/Github/Bitbucket</li>
-        <li>Agile, Scrum, Jira, Confluence, OOP, Postman</li>
+        <li>
+          <strong class="highlight">Tools & Libraries:</strong>
+          Ajv-formats, Bcryptjs, body-parser, CORS, Lodash, XLSX, xlsx-npm,
+          HTML5/CSS3, Multer, Nodemon, Postman, Swagger API, JWT/JWT Assertions,
+          Microsoft Visual Studio, LaTeX
+        </li>
+        <li>
+          <strong class="highlight">Workflow & Version Control:</strong>
+          Agile methodologies, Scrum, Jira, Confluence, Git/Github/Bitbucket
+        </li>
       </ul>
       <h3>Novice</h3>
       <ul>
-        <li>.NET MVC/Webforms, Bootstrap 5, IoT, Flutter, MySQL</li>
-        <li>Mocha.js, JUnit, Pitest, OpenTripPlanner, Socket.IO</li>
+        <li>
+          .NET MVC/Webforms, Bootstrap 5, Cascading Style Sheets (CSS), IoT,
+          Flutter (Android/iOS), MySQL, MySQLWorkbench, Microsoft SQL Server
+        </li>
+        <li>
+          Mocha.js, JUnit, Pitest, Evosuite, Kanban, Microsoft graph-explorer,
+          OpenTripPlanner, Socket.IO, Software Testing
+        </li>
       </ul>
       <hr />
       <h2 id="education">Education & Certificates</h2>
@@ -391,11 +448,13 @@
 
       <h2>Current Position</h2>
       <div class="updates">
-        <h4>Framtiden AB @IKEA</h4>
-        <h4>Software Engineer Consultant</h4>
+        <!-- <h4>Framtiden AB :</h4>-->
+        <h4>Consultant | INTER IKEA</h4>
         <p>
-          Working as a Software Engineer Consultant since Mar 2024, focusing on
-          label domain systems in .NET & SQL.
+          Serving as a Software Engineer Consultant since March 2024, focusing
+          on .NET and SQL-based labeling systems. Responsible for maintaining
+          and enhancing reliability across various backend services in the Label
+          Domain.
         </p>
       </div>
 
@@ -410,7 +469,7 @@
     <!-- Scripts -->
     <script>
       // We only type/erase the SECOND word and keep "Software " static
-      const typedSecondWords = ["Engineer", "Developer"];
+      const typedSecondWords = ["Engineer", "Developer", "Consultant"];
       let typedIndex = 0; // which word in typedSecondWords
       let charIndex = 0; // which character within that word
       let isErasing = false;
@@ -493,7 +552,7 @@
         currentIndex = (currentIndex + 1) % previousRoles.length;
       }
       rotateRoles();
-      setInterval(rotateRoles, 5000);
+      setInterval(rotateRoles, 2000);
     </script>
   </body>
 </html>
