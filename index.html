@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Software Engineer Since 2021 — Rashed Qazizada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Overall dark background, AoC-inspired color scheme */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #0f0f23; /* AoC dark background */
+        color: #cccccc; /* Light gray text */
+        font-family: Consolas, "Lucida Console", Monaco, monospace;
+        line-height: 1.4;
+      }
+
+      /***********************************
+       * TOP NAV (FIXED)
+       ***********************************/
+      .top-nav {
+        position: fixed; /* pins it to top */
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background-color: #0a0a15;
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #333;
+      }
+
+      /* This is where we will “type” and “erase” the text repeatedly */
+      .top-nav .title {
+        color: #00ff00;
+        font-weight: bold;
+        font-size: 1.2rem;
+        white-space: nowrap; /* keep text on one line */
+        overflow: hidden; /* hide overflow while typing/erasing */
+      }
+
+      .top-nav .links a {
+        margin-left: 1em;
+        color: #00dd00; /* AoC green */
+        text-decoration: none;
+      }
+      .top-nav .links a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      /***********************************
+       * LAYOUT: LEFT + CENTER + RIGHT
+       * with pinned columns and pinned top
+       ***********************************/
+      .left-fixed {
+        position: fixed;
+        top: 4em; /* just below the pinned nav bar */
+        left: 0;
+        width: 220px;
+        padding: 1em;
+        border-right: 1px solid #333;
+        height: calc(100vh - 4em); /* fill the screen below nav */
+        overflow-y: auto; /* scroll if menu is taller than screen */
+        background-color: #0f0f2f;
+      }
+      .left-fixed h2 {
+        color: #00ff00;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+      }
+      .left-fixed a {
+        color: #00dd00;
+        text-decoration: none;
+      }
+      .left-fixed a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      .left-fixed ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+      }
+      .left-fixed li {
+        margin-bottom: 0.5em;
+      }
+
+      .center-scrolling {
+        margin-top: 4em; /* push content below pinned nav bar */
+        margin-left: 220px; /* space for left-fixed menu */
+        margin-right: 320px; /* space for right-fixed column */
+        padding: 3em;
+      }
+
+      .right-fixed {
+        position: fixed;
+        top: 4em; /* pinned below nav bar */
+        right: 0;
+        width: 300px;
+        padding: 1em;
+        border-left: 1px solid #333;
+        height: calc(100vh - 4em);
+        overflow-y: auto;
+        background-color: #111122; /* slightly different shade */
+      }
+      .right-fixed h2 {
+        color: #00ff00;
+        margin-top: 0;
+      }
+
+      /***********************************
+       * MAIN CONTENT STYLES
+       ***********************************/
+      h1,
+      h2,
+      h3 {
+        color: #00ff00;
+      }
+      hr {
+        border: none;
+        border-top: 1px dashed #444444;
+        margin: 2em 0;
+      }
+      a {
+        color: #00ff00;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      ul {
+        margin-left: 1.5em;
+        margin-bottom: 1em;
+      }
+
+      .updates {
+        margin-top: 1em;
+        padding: 1em;
+        background-color: #0f0f4f;
+        border: 1px solid #333;
+        border-radius: 6px;
+        font-size: 0.95rem;
+      }
+      .updates h4 {
+        margin-top: 0;
+        color: #00dd00;
+      }
+      .update-text {
+        color: #cccccc;
+        margin-bottom: 0.5em;
+        min-height: 2em;
+      }
+
+      /***********************************
+       * ANIMATIONS
+       ***********************************/
+
+      /* Slide in for Current Position job title */
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .job-title {
+        color: #00ff00; /* initial color */
+        margin-top: 0.3em;
+        margin-bottom: 0.5em;
+        animation: slideInLeft 1.5s ease-out;
+      }
+
+      /* Fade in for each rotating role */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      /***********************************
+       * RESPONSIVE BREAKPOINTS
+       ***********************************/
+
+      /* If screen is 1000px or narrower, remove right column */
+      @media (max-width: 1000px) {
+        .right-fixed {
+          display: none;
+        }
+        /* Expand center to remove the right margin */
+        .center-scrolling {
+          margin-right: 0;
+        }
+      }
+
+      /* If screen is 600px or narrower, also remove left column */
+      @media (max-width: 600px) {
+        .left-fixed {
+          display: none;
+        }
+        /* Expand center to remove the left margin as well */
+        .center-scrolling {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <!-- TOP NAV BAR (PINNED) -->
+    <div class="top-nav">
+      <div class="title" id="typingTitle"></div>
+
+      <div class="links">
+        <!-- Bracket links in AoC style to your repos/LinkedIn -->
+        <a href="https://github.com/rqkohistani" target="_blank"
+          >[GitHub Main]</a
+        >
+        <a
+          href="https://github.com/rqkohistani/Linnaeus-University-Bachelor-CS"
+          target="_blank"
+          >[Bachelor CS]</a
+        >
+        <a
+          href="https://github.com/rqkohistani/Backend-Collection"
+          target="_blank"
+          >[Backend]</a
+        >
+        <a href="https://github.com/rqkohistani/nodejs-projects" target="_blank"
+          >[Node.js]</a
+        >
+        <a
+          href="https://github.com/rqkohistani/Dot-Net-Projects"
+          target="_blank"
+          >[.NET]</a
+        >
+        <a
+          href="https://github.com/rqkohistani/Database-projects"
+          target="_blank"
+          >[DB Projects]</a
+        >
+        <a
+          href="https://www.linkedin.com/in/rashed-qazizada-1b64b68a/"
+          target="_blank"
+          >[LinkedIn]</a
+        >
+      </div>
+    </div>
+
+    <!-- LEFT COLUMN: Menu of CV sections (PINNED) -->
+    <div class="left-fixed">
+      <ul>
+        <!-- "CV" Link: clicking scrolls back to top -->
+        <h2>
+          <li><a href="#top">CV Sections</a></li>
+        </h2>
+        <li><a href="#profile-summary">Profile Summary</a></li>
+        <li><a href="#top-skills">Top Skills</a></li>
+        <li><a href="#project-highlights">Project Highlights</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education & Certificates</a></li>
+      </ul>
+    </div>
+
+    <!-- CENTER COLUMN: Scrollable content -->
+    <div class="center-scrolling">
+      <h1 id="profile-summary">Hi! I'm Rashed Qazizada.</h1>
+      <p>
+        Welcome to my personal Advent of Code–inspired site, featuring pinned
+        side columns and a scrollable center.
+      </p>
+      <hr />
+
+      <h2>Profile Summary</h2>
+      <p>
+        I'm an enthusiastic and dedicated software developer with over 3 years
+        of experience in backend and full-stack development. Skilled in
+        <strong>ASP.NET</strong>, <strong>Node.js</strong>,
+        <strong>SQL</strong>, and <strong>PL/SQL</strong>, I thrive in agile
+        environments and am continually expanding my technical expertise. With a
+        <em>Certified ScrumMaster®</em> certification, a bachelor’s degree in
+        software technology, and a passion for problem-solving, I’m looking to
+        join a forward-thinking organization—ideally helping build digital
+        products that make everyday life better.
+      </p>
+      <hr />
+
+      <h2 id="top-skills">Top Skills</h2>
+      <ul>
+        <li>Node.js (JavaScript), ASP.NET, PL/SQL Database, RESTful APIs</li>
+        <li>Team collaboration in agile/Scrum settings</li>
+        <li>Passion for new technologies and innovations</li>
+        <li>Proven bug fixes & system performance improvements</li>
+        <li>Adaptable to new environments & tech stacks</li>
+        <li>Cross-functional team communication</li>
+      </ul>
+      <hr />
+
+      <h2 id="project-highlights">Project Highlights</h2>
+      <!-- Replaced with new, more detailed info from user -->
+      <h3>Mar 2024 - Present: Framtiden AB | Consultant @IKEA</h3>
+      <ul>
+        <li>Developed/maintained labeling systems in .NET & SQL</li>
+        <li>Resolved critical bugs across PIA, LCI, RPI, etc.</li>
+        <li>Improved system stability and reliability significantly</li>
+      </ul>
+
+      <h3>Dec 2023 – Feb 2024: Softhouse AB | Java Backend</h3>
+      <ul>
+        <li>Refined data structures & algorithms, focusing on performance</li>
+      </ul>
+      <h3>Aug 2023 – Oct 2023: Go-Ahead Nordic (ASP.NET | Backend)</h3>
+      <ul>
+        <li>
+          Refactored data loads from EnTur to align with Go-Ahead’s product
+          templates
+        </li>
+        <li>Worked with OpenTripPlanner 2 and REST API ticket information</li>
+        <li>
+          Handled data consolidation to enhance user experience on Go-Ahead
+          platforms
+        </li>
+        <li>
+          Tech stack highlights: Git, MS SQL Server, C#, ASP.NET 6.0,
+          OpenTripPlanner
+        </li>
+      </ul>
+
+      <h3>
+        Sep 2022 - Jul 2023: World Baton & Intl. Baton Twirling Fed. (Node.js)
+      </h3>
+      <ul>
+        <li>
+          Significantly upgraded the federation's scoring system—achieving a 98%
+          increase in data processing speed
+        </li>
+        <li>
+          Integrated Prisma.io with xlsx-npm for efficient data handling;
+          collaborated closely with front-end
+        </li>
+        <li>
+          Spearheaded technical development, ensuring project goals aligned with
+          evolving competition needs
+        </li>
+        <li>
+          Tech stack highlights: Prisma.io, xlsx-npm, Azure Database,
+          Express.js, Node.js, Socket.IO
+        </li>
+      </ul>
+
+      <h3>May 2022 - Aug 2022: World Baton Twirling Fed. (Node.js)</h3>
+      <ul>
+        <li>
+          Led the development of an enhanced scoring system—focusing on accuracy
+          and rapid results dissemination
+        </li>
+        <li>
+          Demonstrated strong leadership, delivering a stable and accessible
+          platform for all stakeholders
+        </li>
+        <li>
+          Tech stack highlights: Azure DB, Git/Bitbucket, ExpressJS, Node.js,
+          JWT, CORS
+        </li>
+      </ul>
+
+      <h3>Jan 2022 - Apr 2022: SW-development Sync Solution (ROL Ergo AB)</h3>
+      <ul>
+        <li>
+          Integrated two distinct booking systems (external platform + RIO) for
+          seamless scheduling
+        </li>
+        <li>
+          Served as Junior Backend Developer; contributed to effective testing
+          and reliable backend solutions
+        </li>
+        <li>
+          Enhanced skillset in backend development under real-world constraints
+        </li>
+      </ul>
+
+      <hr />
+
+      <h2 id="skills">Skills</h2>
+      <h3>Intermediate</h3>
+      <ul>
+        <li>
+          ASP.NET, C# programming, JavaScript, SQL (Oracle, MS SQL), PL/SQL
+        </li>
+        <li>RESTful APIs, Node.js, Express.js, Git/Github/Bitbucket</li>
+        <li>Agile, Scrum, Jira, Confluence, OOP, Postman</li>
+      </ul>
+
+      <h3>Novice</h3>
+      <ul>
+        <li>.NET MVC/Webforms, Bootstrap 5, IoT, Flutter, MySQL</li>
+        <li>Mocha.js, JUnit, Pitest, OpenTripPlanner, Socket.IO</li>
+      </ul>
+      <hr />
+
+      <h2 id="education">Education & Certificates</h2>
+      <ul>
+        <li>
+          <strong>BSc Software Technology</strong> — Linnaeus University
+          (2018-2021)
+        </li>
+        <li><strong>Certified ScrumMaster® (CSM)</strong> — 2022</li>
+      </ul>
+      <p>
+        Thank you for taking the time to read through my CV! Check out my
+        <a href="https://github.com/rqkohistani" target="_blank">GitHub</a> or
+        <a
+          href="https://www.linkedin.com/in/rashed-qazizada-1b64b68a/"
+          target="_blank"
+          >LinkedIn</a
+        >
+        for more projects and details.
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN: Pinned - "Current Position" (static) + "Previous Roles" (rotating feed) -->
+    <div class="right-fixed">
+      <!-- Current Position (Static) -->
+      <img
+        src="profile-img.jpg"
+        alt="Profile Photo"
+        style="display: block; width: 100%; margin-bottom: 1em"
+      />
+      <h2>Current Position</h2>
+      <div class="updates">
+        <h4>Framtiden AB @IKEA</h4>
+        <!-- Job Title with slide-in animation 
+        <h4 class="job-title">Software Engineer Consultant</h4>-->
+        <h4>Software Engineer Consultant</h4>
+
+        <p>
+          Working as a Software Engineer Consultant since Mar 2024, focusing on
+          label domain systems in .NET & SQL.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Previous Roles (Rotating Feed) -->
+      <h2>Previous Roles</h2>
+      <div class="updates">
+        <div class="update-text" id="rolesText"></div>
+      </div>
+    </div>
+
+    <script>
+      // Repeated Typewriter Effect for "Software Engineer Since 2021"
+      const typedTitleEl = document.getElementById("typingTitle");
+      const typedText = "Software Engineer Since 2021";
+
+      let index = 0;
+      let isErasing = false;
+
+      // Speeds (ms)
+      const typingSpeed = 70;
+      const erasingSpeed = 50;
+
+      // Pause times (ms)
+      const pauseBeforeErasing = 1000; // after the text is fully typed
+      const pauseBeforeTyping = 800; // after the text is fully erased
+
+      function loopType() {
+        if (!isErasing && index < typedText.length) {
+          // Continue typing
+          typedTitleEl.textContent = typedText.slice(0, index + 1);
+          index++;
+          setTimeout(loopType, typingSpeed);
+        } else if (!isErasing && index === typedText.length) {
+          // Finished typing, pause, then start erasing
+          isErasing = true;
+          setTimeout(loopType, pauseBeforeErasing);
+        } else if (isErasing && index > 0) {
+          // Erasing text
+          typedTitleEl.textContent = typedText.slice(0, index - 1);
+          index--;
+          setTimeout(loopType, erasingSpeed);
+        } else if (isErasing && index === 0) {
+          // Finished erasing, pause, then type again
+          isErasing = false;
+          setTimeout(loopType, pauseBeforeTyping);
+        }
+      }
+
+      // Start the looping typewriter
+      loopType();
+
+      // Array of "previous roles" with separate titles and date/project lines
+      const previousRoles = [
+        {
+          title: "Java Backend Developer",
+          period: "Dec 2023 - Feb 2024: Softhouse AB — Java Backend Projects",
+        },
+        {
+          title: "ASP.NET Developer",
+          period: "Aug 2023 - Oct 2023: ASP.NET for Go-Ahead Nordic",
+        },
+        {
+          title: "Node.js Developer",
+          period:
+            "Sep 2022 - Jul 2023: International Baton Twirling Federation",
+        },
+        {
+          title: "Node.js Developer",
+          period:
+            "May 2022 - Aug 2022: Enhanced scoring system for World Baton",
+        },
+        {
+          title: "Backend Integrations",
+          period:
+            "Jan 2022 - Apr 2022: ROL Ergo AB — Booking systems integration",
+        },
+      ];
+
+      let currentIndex = 0;
+      const rolesTextEl = document.getElementById("rolesText");
+
+      function rotateRoles() {
+        // Clear & re-insert new content with fadeIn each time
+        rolesTextEl.innerHTML = `
+          <h4 class="fade-in">${previousRoles[currentIndex].title}</h4>
+          <p class="fade-in">${previousRoles[currentIndex].period}</p>
+        `;
+        currentIndex = (currentIndex + 1) % previousRoles.length;
+      }
+
+      // Start with the first role
+      rotateRoles();
+      // Rotate every 5 seconds
+      setInterval(rotateRoles, 5000);
+    </script>
+  </body>
+</html>
