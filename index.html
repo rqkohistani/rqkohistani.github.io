@@ -2,24 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Software Engineer Since 2021 — Rashed Qazizada</title>
+    <title>Software — Rashed Qazizada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      /* Overall dark background, AoC-inspired color scheme */
+      /* Overall dark background & greenish color scheme */
       body {
         margin: 0;
         padding: 0;
-        background-color: #0f0f23; /* AoC dark background */
-        color: #cccccc; /* Light gray text */
+        background-color: #0f0f23;
+        color: #cccccc;
         font-family: Consolas, "Lucida Console", Monaco, monospace;
         line-height: 1.4;
       }
 
-      /***********************************
-       * TOP NAV (FIXED)
-       ***********************************/
       .top-nav {
-        position: fixed; /* pins it to top */
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
@@ -27,44 +24,36 @@
         background-color: #0a0a15;
         padding: 1em;
         display: flex;
-        flex-direction: row;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
         border-bottom: 1px solid #333;
       }
-
-      /* This is where we will “type” and “erase” the text repeatedly */
       .top-nav .title {
         color: #00ff00;
         font-weight: bold;
         font-size: 1.2rem;
-        white-space: nowrap; /* keep text on one line */
-        overflow: hidden; /* hide overflow while typing/erasing */
+        white-space: nowrap;
+        overflow: hidden;
       }
-
       .top-nav .links a {
         margin-left: 1em;
-        color: #00dd00; /* AoC green */
+        color: #00dd00;
         text-decoration: none;
       }
       .top-nav .links a:hover {
-        color: #ffffff;
+        color: #00ff00;
         text-decoration: underline;
       }
 
-      /***********************************
-       * LAYOUT: LEFT + CENTER + RIGHT
-       * with pinned columns and pinned top
-       ***********************************/
       .left-fixed {
         position: fixed;
-        top: 4em; /* just below the pinned nav bar */
+        top: 4em;
         left: 0;
         width: 220px;
         padding: 1em;
         border-right: 1px solid #333;
-        height: calc(100vh - 4em); /* fill the screen below nav */
-        overflow-y: auto; /* scroll if menu is taller than screen */
+        height: calc(100vh - 4em);
+        overflow-y: auto;
         background-color: #0f0f2f;
       }
       .left-fixed h2 {
@@ -77,7 +66,7 @@
         text-decoration: none;
       }
       .left-fixed a:hover {
-        color: #ffffff;
+        color: #00ff00;
         text-decoration: underline;
       }
       .left-fixed ul {
@@ -90,35 +79,32 @@
       }
 
       .center-scrolling {
-        margin-top: 4em; /* push content below pinned nav bar */
-        margin-left: 220px; /* space for left-fixed menu */
-        margin-right: 320px; /* space for right-fixed column */
+        margin-top: 4em;
+        margin-left: 220px;
+        margin-right: 320px;
         padding: 3em;
       }
 
       .right-fixed {
         position: fixed;
-        top: 4em; /* pinned below nav bar */
+        top: 4em;
         right: 0;
         width: 300px;
         padding: 1em;
         border-left: 1px solid #333;
         height: calc(100vh - 4em);
         overflow-y: auto;
-        background-color: #111122; /* slightly different shade */
+        background-color: #111122;
       }
       .right-fixed h2 {
-        color: #00ff00;
+        color: #00ff00b5;
         margin-top: 0;
       }
 
-      /***********************************
-       * MAIN CONTENT STYLES
-       ***********************************/
       h1,
       h2,
       h3 {
-        color: #00ff00;
+        color: #00ff00b5;
       }
       hr {
         border: none;
@@ -130,7 +116,7 @@
         text-decoration: none;
       }
       a:hover {
-        color: #ffffff;
+        color: #00ff00;
         text-decoration: underline;
       }
       ul {
@@ -156,76 +142,46 @@
         min-height: 2em;
       }
 
-      /***********************************
-       * ANIMATIONS
-       ***********************************/
-
-      /* Slide in for Current Position job title */
-      @keyframes slideInLeft {
-        0% {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-      .job-title {
-        color: #00ff00; /* initial color */
-        margin-top: 0.3em;
-        margin-bottom: 0.5em;
-        animation: slideInLeft 1.5s ease-out;
-      }
-
-      /* Fade in for each rotating role */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      .fade-in {
-        animation: fadeIn 0.8s ease-out;
-      }
-
-      /***********************************
-       * RESPONSIVE BREAKPOINTS
-       ***********************************/
-
-      /* If screen is 1000px or narrower, remove right column */
+      /* Responsive breakpoints */
       @media (max-width: 1000px) {
         .right-fixed {
           display: none;
         }
-        /* Expand center to remove the right margin */
         .center-scrolling {
           margin-right: 0;
         }
       }
-
-      /* If screen is 600px or narrower, also remove left column */
       @media (max-width: 600px) {
         .left-fixed {
           display: none;
         }
-        /* Expand center to remove the left margin as well */
         .center-scrolling {
           margin-left: 0;
         }
+      }
+      /* Optionally hide the typewriter title on smaller screens */
+      @media (max-width: 1025px) {
+        .top-nav .title {
+          display: none;
+        }
+      }
+      img#profileImg {
+        display: block;
+        margin-bottom: 2em;
+        width: 100px;
+        height: 100px;
+        border-radius: 20%;
+        margin-left: 40px;
+        box-shadow: 0 0 10px #00ff00;
       }
     </style>
   </head>
 
   <body id="top">
-    <!-- TOP NAV BAR (PINNED) -->
+    <!-- TOP NAV BAR -->
     <div class="top-nav">
       <div class="title" id="typingTitle"></div>
-
       <div class="links">
-        <!-- Bracket links in AoC style to your repos/LinkedIn -->
         <a href="https://github.com/rqkohistani" target="_blank"
           >[GitHub Main]</a
         >
@@ -260,10 +216,9 @@
       </div>
     </div>
 
-    <!-- LEFT COLUMN: Menu of CV sections (PINNED) -->
+    <!-- LEFT COLUMN -->
     <div class="left-fixed">
       <ul>
-        <!-- "CV" Link: clicking scrolls back to top -->
         <h2>
           <li><a href="#top">CV Sections</a></li>
         </h2>
@@ -275,15 +230,14 @@
       </ul>
     </div>
 
-    <!-- CENTER COLUMN: Scrollable content -->
+    <!-- CENTER COLUMN -->
     <div class="center-scrolling">
       <h1 id="profile-summary">Hi! I'm Rashed Qazizada.</h1>
       <p>
-        Welcome to my personal Advent of Code–inspired site, featuring pinned
-        side columns and a scrollable center.
+        Welcome to my personal site, featuring pinned side columns and a
+        scrollable center.
       </p>
       <hr />
-
       <h2>Profile Summary</h2>
       <p>
         I'm an enthusiastic and dedicated software developer with over 3 years
@@ -297,7 +251,6 @@
         products that make everyday life better.
       </p>
       <hr />
-
       <h2 id="top-skills">Top Skills</h2>
       <ul>
         <li>Node.js (JavaScript), ASP.NET, PL/SQL Database, RESTful APIs</li>
@@ -308,9 +261,7 @@
         <li>Cross-functional team communication</li>
       </ul>
       <hr />
-
       <h2 id="project-highlights">Project Highlights</h2>
-      <!-- Replaced with new, more detailed info from user -->
       <h3>Mar 2024 - Present: Framtiden AB | Consultant @IKEA</h3>
       <ul>
         <li>Developed/maintained labeling systems in .NET & SQL</li>
@@ -393,7 +344,6 @@
       </ul>
 
       <hr />
-
       <h2 id="skills">Skills</h2>
       <h3>Intermediate</h3>
       <ul>
@@ -403,14 +353,12 @@
         <li>RESTful APIs, Node.js, Express.js, Git/Github/Bitbucket</li>
         <li>Agile, Scrum, Jira, Confluence, OOP, Postman</li>
       </ul>
-
       <h3>Novice</h3>
       <ul>
         <li>.NET MVC/Webforms, Bootstrap 5, IoT, Flutter, MySQL</li>
         <li>Mocha.js, JUnit, Pitest, OpenTripPlanner, Socket.IO</li>
       </ul>
       <hr />
-
       <h2 id="education">Education & Certificates</h2>
       <ul>
         <li>
@@ -431,21 +379,20 @@
       </p>
     </div>
 
-    <!-- RIGHT COLUMN: Pinned - "Current Position" (static) + "Previous Roles" (rotating feed) -->
+    <!-- RIGHT COLUMN -->
     <div class="right-fixed">
-      <!-- Current Position (Static) -->
-      <img
-        src="profile-img.jpg"
-        alt="Profile Photo"
-        style="display: block; width: 100%; margin-bottom: 1em"
-      />
+      <img id="profileImg" alt="Profile placeholder" />
+      <script>
+        // Generate random placeholder
+        const profileImgEl = document.getElementById("profileImg");
+        const randomSeed = Math.random().toString(36).substring(2);
+        profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
+      </script>
+
       <h2>Current Position</h2>
       <div class="updates">
         <h4>Framtiden AB @IKEA</h4>
-        <!-- Job Title with slide-in animation 
-        <h4 class="job-title">Software Engineer Consultant</h4>-->
         <h4>Software Engineer Consultant</h4>
-
         <p>
           Working as a Software Engineer Consultant since Mar 2024, focusing on
           label domain systems in .NET & SQL.
@@ -454,55 +401,61 @@
 
       <hr />
 
-      <!-- Previous Roles (Rotating Feed) -->
       <h2>Previous Roles</h2>
       <div class="updates">
         <div class="update-text" id="rolesText"></div>
       </div>
     </div>
 
+    <!-- Scripts -->
     <script>
-      // Repeated Typewriter Effect for "Software Engineer Since 2021"
-      const typedTitleEl = document.getElementById("typingTitle");
-      const typedText = "Software Engineer Since 2021";
-
-      let index = 0;
+      // We only type/erase the SECOND word and keep "Software " static
+      const typedSecondWords = ["Engineer", "Developer"];
+      let typedIndex = 0; // which word in typedSecondWords
+      let charIndex = 0; // which character within that word
       let isErasing = false;
+
+      const typedTitleEl = document.getElementById("typingTitle");
 
       // Speeds (ms)
       const typingSpeed = 70;
       const erasingSpeed = 50;
 
       // Pause times (ms)
-      const pauseBeforeErasing = 1000; // after the text is fully typed
-      const pauseBeforeTyping = 800; // after the text is fully erased
+      const pauseBeforeErasing = 1000; // after the word is fully typed
+      const pauseBeforeTyping = 800; // after the word is fully erased
 
       function loopType() {
-        if (!isErasing && index < typedText.length) {
-          // Continue typing
-          typedTitleEl.textContent = typedText.slice(0, index + 1);
-          index++;
+        const currentWord = typedSecondWords[typedIndex];
+
+        if (!isErasing && charIndex < currentWord.length) {
+          // Typing forward
+          typedTitleEl.textContent =
+            "Software " + currentWord.slice(0, charIndex + 1);
+          charIndex++;
           setTimeout(loopType, typingSpeed);
-        } else if (!isErasing && index === typedText.length) {
-          // Finished typing, pause, then start erasing
+        } else if (!isErasing && charIndex === currentWord.length) {
+          // Done typing this word, pause, then erase
           isErasing = true;
           setTimeout(loopType, pauseBeforeErasing);
-        } else if (isErasing && index > 0) {
-          // Erasing text
-          typedTitleEl.textContent = typedText.slice(0, index - 1);
-          index--;
+        } else if (isErasing && charIndex > 0) {
+          // Erasing backward
+          typedTitleEl.textContent =
+            "Software " + currentWord.slice(0, charIndex - 1);
+          charIndex--;
           setTimeout(loopType, erasingSpeed);
-        } else if (isErasing && index === 0) {
-          // Finished erasing, pause, then type again
+        } else if (isErasing && charIndex === 0) {
+          // Done erasing this word, move to next
           isErasing = false;
+          typedIndex = (typedIndex + 1) % typedSecondWords.length;
           setTimeout(loopType, pauseBeforeTyping);
         }
       }
 
-      // Start the looping typewriter
+      // Start the type/erase cycle
       loopType();
 
-      // Array of "previous roles" with separate titles and date/project lines
+      // Rotating "previous roles"
       const previousRoles = [
         {
           title: "Java Backend Developer",
@@ -533,17 +486,13 @@
       const rolesTextEl = document.getElementById("rolesText");
 
       function rotateRoles() {
-        // Clear & re-insert new content with fadeIn each time
         rolesTextEl.innerHTML = `
           <h4 class="fade-in">${previousRoles[currentIndex].title}</h4>
           <p class="fade-in">${previousRoles[currentIndex].period}</p>
         `;
         currentIndex = (currentIndex + 1) % previousRoles.length;
       }
-
-      // Start with the first role
       rotateRoles();
-      // Rotate every 5 seconds
       setInterval(rotateRoles, 5000);
     </script>
   </body>
