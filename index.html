@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Software — Rashed Qazizada</title>
+    <title>Software — R.Qazizada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       /* Overall dark background & greenish color scheme */
@@ -198,8 +198,8 @@
         }
       }
 
-       /* Optionally hide the typewriter title on smaller screens */
-      @media (max-width: 1025px) {
+      /* Optionally hide the typewriter title on smaller screens */
+      @media (max-width: 1144px) {
         .top-nav .title {
           display: none;
         }
@@ -207,11 +207,12 @@
 
       img#profileImg {
         display: block;
+        margin-top: 3em;
         margin-bottom: 2em;
         width: 100px;
         height: 100px;
         border-radius: 20%;
-        margin-left: 40px;
+        margin-left: 60px;
         box-shadow: 0 0 10px #00ff00;
       }
 
@@ -368,17 +369,18 @@
       </ul>
 
       <!-- Current Time -->
+      <!-- 
       <div
         class="current-time"
         style="margin-top: 20px; text-align: center; font-size: 1.2em"
       >
         <p id="time" style="font-weight: bold">Loading current time...</p>
-      </div>
+      </div> -->
 
       <!-- Customizable Greeting -->
       <div
         class="custom-greeting"
-        style="margin-top: 20px; text-align: center; font-size: 1.2em"
+        style="margin-top: 20px; text-align: center; font-size: 0.8em"
       >
         <img id="profileImg" alt="Profile placeholder" />
         <p id="greeting" style="font-weight: bold">Hello!</p>
@@ -390,23 +392,45 @@
         >
       </div>
     </div>
-
+<!--
     <script>
-      // Function to update the current time
-      function updateTime() {
-        const timeEl = document.getElementById("time");
-        const now = new Date();
-        const timeString = now.toLocaleTimeString(); // Format: HH:MM:SS
-        timeEl.textContent = `Current Time: ${timeString}`;
-      }
+       // Function to update the current time
+       function updateTime() {
+         const timeEl = document.getElementById("time");
+         const now = new Date();
+         const timeString = now.toLocaleTimeString(); // Format: HH:MM:SS
+         timeEl.textContent = `Current Time: ${timeString}`;
+       }
 
-      // Update the time every second
-      setInterval(updateTime, 1000);
+       // Update the time every second
+       setInterval(updateTime, 1000);
 
-      // Initial call to display time immediately on load
-      updateTime();
+       // Initial call to display time immediately on load
+       updateTime();
 
-      // Function to set a customizable greeting based on the time of day
+       // Function to set a customizable greeting based on the time of day
+       function setGreeting() {
+         const greetingEl = document.getElementById("greeting");
+         const now = new Date();
+         const hour = now.getHours();
+
+         let greeting = "Hello!";
+         if (hour >= 5 && hour < 12) {
+           greeting = "Good Morning!";
+         } else if (hour >= 12 && hour < 18) {
+           greeting = "Good Afternoon!";
+         } else {
+           greeting = "Good Evening!";
+         }
+
+         greetingEl.textContent = greeting;
+       }
+
+       // Set greeting on page load
+       setGreeting();
+    </script> -->
+    
+    <script>
       function setGreeting() {
         const greetingEl = document.getElementById("greeting");
         const now = new Date();
@@ -414,19 +438,19 @@
 
         let greeting = "Hello!";
         if (hour >= 5 && hour < 12) {
-          greeting = "Good Morning!";
+          greeting = "Hello! Good Morning";
         } else if (hour >= 12 && hour < 18) {
-          greeting = "Good Afternoon!";
+          greeting = "Hello! Good Afternoon";
         } else {
-          greeting = "Good Evening!";
+          greeting = "Hello! Good Evening";
         }
-
         greetingEl.textContent = greeting;
       }
 
-      // Set greeting on page load
+      // Set the greeting when the page loads
       setGreeting();
     </script>
+
     <script>
       const profileImgEl = document.getElementById("profileImg");
 
@@ -753,20 +777,6 @@
       rotateRoles();
       setInterval(rotateRoles, 2000);
     </script>
-    <!-- JavaScript for Theme Toggle 
-    <script>
-      const themeToggleButton = document.getElementById("themeToggle");
-      const bodyElement = document.body;
-
-      themeToggleButton.addEventListener("click", () => {
-        bodyElement.classList.toggle("light-mode");
-        themeToggleButton.textContent = bodyElement.classList.contains(
-          "light-mode"
-        )
-          ? "Dark Mode"
-          : "Light Mode";
-      });
-    </script>-->
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
       const bodyElement = document.body;
