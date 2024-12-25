@@ -41,11 +41,9 @@
         text-decoration: none;
         /* Prevent text wrapping */
         white-space: nowrap;
-
         /* Handle overflow gracefully */
         overflow: hidden;
         text-overflow: ellipsis;
-
         /* Optional: Ensure consistent spacing */
         padding: 0 0.5em;
       }
@@ -65,24 +63,29 @@
         overflow-y: auto;
         background-color: #0f0f2f;
       }
+
       .left-fixed h2 {
         color: #00ff00;
         margin-top: 0;
         margin-bottom: 0.5em;
       }
+
       .left-fixed a {
         color: #00dd00;
         text-decoration: none;
       }
+
       .left-fixed a:hover {
         color: #00ff00;
         text-decoration: underline;
       }
+
       .left-fixed ul {
         list-style-type: none;
         padding-left: 0;
         margin-left: 0;
       }
+
       .left-fixed li {
         margin-bottom: 0.5em;
       }
@@ -105,6 +108,7 @@
         overflow-y: auto;
         background-color: #111122;
       }
+
       .right-fixed h2 {
         color: #00ff00b5;
         margin-top: 0;
@@ -115,19 +119,23 @@
       h3 {
         color: #00ff00b5;
       }
+
       hr {
         border: none;
         border-top: 1px dashed #444444;
         margin: 2em 0;
       }
+
       a {
         color: #00ff00;
         text-decoration: none;
       }
+
       a:hover {
         color: #00ff00;
         text-decoration: underline;
       }
+
       ul {
         margin-left: 1.5em;
         margin-bottom: 1em;
@@ -141,21 +149,22 @@
         border-radius: 6px;
         font-size: 0.95rem;
       }
+
       .updates h4 {
         margin-top: 0;
         color: #00dd00;
       }
+      /*
       .update-text {
         color: #cccccc;
         margin-bottom: 0.5em;
         min-height: 2em;
       }
-      /* 1) Another color for h5 */
+*/
       h5 {
-        color: #12f4707f; /* e.g., orange */
+        color: #12f4707f;
       }
 
-      /* 2) Bold + different color for the highlighted words/phrases */
       .highlight {
         font-weight: bold;
         color: #00ff007f; /* e.g., light blue */
@@ -165,10 +174,12 @@
         .right-fixed {
           display: none;
         }
+
         .center-scrolling {
           margin-right: 0;
         }
       }
+
       @media (max-width: 600px) {
         .left-fixed {
           display: none;
@@ -187,12 +198,13 @@
         }
       }
 
-      /* Optionally hide the typewriter title on smaller screens */
+       /* Optionally hide the typewriter title on smaller screens */
       @media (max-width: 1025px) {
         .top-nav .title {
           display: none;
         }
       }
+
       img#profileImg {
         display: block;
         margin-bottom: 2em;
@@ -201,6 +213,89 @@
         border-radius: 20%;
         margin-left: 40px;
         box-shadow: 0 0 10px #00ff00;
+      }
+
+      /* Light Mode Styles */
+      body.light-mode {
+        background-color: #ffffff;
+        color: #000000;
+      }
+
+      body.light-mode .top-nav {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+      }
+
+      body.light-mode .top-nav .title {
+        color: #000000;
+      }
+
+      body.light-mode .top-nav .links a {
+        color: #000000;
+      }
+
+      body.light-mode .top-nav .links a:hover {
+        color: #555555;
+      }
+
+      body.light-mode .left-fixed,
+      body.light-mode .right-fixed {
+        background-color: #eaeaea;
+        border-color: #ddd;
+      }
+
+      body.light-mode .updates {
+        background-color: #f2f2f2;
+        border-color: #ccc;
+      }
+
+      body.light-mode .updates h4 {
+        color: #000000;
+      }
+
+      body.light-mode h1,
+      body.light-mode h2,
+      body.light-mode h3,
+      body.light-mode h5,
+      body.light-mode .highlight {
+        color: #000000;
+      }
+
+      body.light-mode a {
+        color: #000000;
+      }
+
+      body.light-mode a:hover {
+        color: #555555;
+      }
+      /* Style for the theme toggle link */
+      #themeToggle {
+        display: inline-block;
+        /*background-color: #00ff007f;*/
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 0.5em 1em;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #themeToggle:hover {
+        background-color: #555;
+        border-color: #666;
+      }
+
+      /* Light Mode styles for theme toggle link */
+      body.light-mode #themeToggle {
+        background-color: #f0f0f0;
+        color: #000;
+        border: 1px solid #ccc;
+      }
+
+      body.light-mode #themeToggle:hover {
+        background-color: #ddd;
+        border-color: #bbb;
       }
     </style>
   </head>
@@ -285,8 +380,14 @@
         class="custom-greeting"
         style="margin-top: 20px; text-align: center; font-size: 1.2em"
       >
-      <img id="profileImg" alt="Profile placeholder" />
+        <img id="profileImg" alt="Profile placeholder" />
         <p id="greeting" style="font-weight: bold">Hello!</p>
+        <a
+          id="themeToggle"
+          href="javascript:void(0)"
+          style="margin-left: auto; padding: 0.5em"
+          >[Light Mode]</a
+        >
       </div>
     </div>
 
@@ -534,7 +635,7 @@
 
     <!-- RIGHT COLUMN -->
     <div class="right-fixed">
-       <!--<img id="profileImg" alt="Profile placeholder" />
+      <!--<img id="profileImg" alt="Profile placeholder" />
      
       <script>
         // Generate random placeholder
@@ -651,6 +752,50 @@
       }
       rotateRoles();
       setInterval(rotateRoles, 2000);
+    </script>
+    <!-- JavaScript for Theme Toggle 
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+      const bodyElement = document.body;
+
+      themeToggleButton.addEventListener("click", () => {
+        bodyElement.classList.toggle("light-mode");
+        themeToggleButton.textContent = bodyElement.classList.contains(
+          "light-mode"
+        )
+          ? "Dark Mode"
+          : "Light Mode";
+      });
+    </script>-->
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+      const bodyElement = document.body;
+
+      // Function to set theme
+      function setTheme(theme) {
+        if (theme === "light") {
+          bodyElement.classList.add("light-mode");
+          themeToggleButton.textContent = "[Dark Mode]";
+        } else {
+          bodyElement.classList.remove("light-mode");
+          themeToggleButton.textContent = "[Light Mode]";
+        }
+        // Save theme preference in localStorage
+        localStorage.setItem("theme", theme);
+      }
+
+      // Initialize theme based on saved preference or default
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      setTheme(savedTheme);
+
+      // Event listener for theme toggle link
+      themeToggleButton.addEventListener("click", () => {
+        const currentTheme = bodyElement.classList.contains("light-mode")
+          ? "light"
+          : "dark";
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+      });
     </script>
   </body>
 </html>
