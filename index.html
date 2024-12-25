@@ -236,6 +236,7 @@
     </div>
 
     <!-- LEFT COLUMN -->
+    <!--
     <div class="left-fixed">
       <ul>
         <h2>
@@ -248,6 +249,73 @@
         <li><a href="#education">Education & Certificates</a></li>
       </ul>
     </div>
+-->
+    <!-- LEFT COLUMN -->
+    <div class="left-fixed">
+      <ul>
+        <h2>
+          <li><a href="#top">CV Sections</a></li>
+        </h2>
+        <li><a href="#profile-summary">Profile Summary</a></li>
+        <li><a href="#top-skills">Top Skills</a></li>
+        <li><a href="#project-highlights">Project Highlights</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education & Certificates</a></li>
+      </ul>
+
+      <!-- Current Time -->
+      <div
+        class="current-time"
+        style="margin-top: 20px; text-align: center; font-size: 1.2em"
+      >
+        <p id="time" style="font-weight: bold">Loading current time...</p>
+      </div>
+
+      <!-- Customizable Greeting -->
+      <div
+        class="custom-greeting"
+        style="margin-top: 20px; text-align: center; font-size: 1.2em"
+      >
+        <p id="greeting" style="font-weight: bold">Hello!</p>
+      </div>
+    </div>
+
+    <script>
+      // Function to update the current time
+      function updateTime() {
+        const timeEl = document.getElementById("time");
+        const now = new Date();
+        const timeString = now.toLocaleTimeString(); // Format: HH:MM:SS
+        timeEl.textContent = `Current Time: ${timeString}`;
+      }
+
+      // Update the time every second
+      setInterval(updateTime, 1000);
+
+      // Initial call to display time immediately on load
+      updateTime();
+
+      // Function to set a customizable greeting based on the time of day
+      function setGreeting() {
+        const greetingEl = document.getElementById("greeting");
+        const now = new Date();
+        const hour = now.getHours();
+
+        let greeting = "Hello!";
+        if (hour >= 5 && hour < 12) {
+          greeting = "Good Morning!";
+        } else if (hour >= 12 && hour < 18) {
+          greeting = "Good Afternoon!";
+        } else {
+          greeting = "Good Evening!";
+        }
+
+        greetingEl.textContent = greeting;
+      }
+
+      // Set greeting on page load
+      setGreeting();
+    </script>
 
     <!-- CENTER COLUMN -->
     <div class="center-scrolling">
@@ -256,6 +324,7 @@
         This is my CV and an overview of my professional experiences—feel free
         to explore my background and projects!
       </p>
+      <p>Last update: 2024-12-23</p>
       <hr />
       <h2>Profile Summary</h2>
       <p>
@@ -440,11 +509,29 @@
     <!-- RIGHT COLUMN -->
     <div class="right-fixed">
       <img id="profileImg" alt="Profile placeholder" />
+      <!--
       <script>
         // Generate random placeholder
         const profileImgEl = document.getElementById("profileImg");
         const randomSeed = Math.random().toString(36).substring(2);
         profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
+      </script>
+      -->
+
+      <script>
+        const profileImgEl = document.getElementById("profileImg");
+
+        // Function to update the image with a new random seed
+        function updateProfileImage() {
+          const randomSeed = Math.random().toString(36).substring(2);
+          profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
+        }
+
+        // Call the function every 5 seconds
+        setInterval(updateProfileImage, 5000);
+
+        // Initial call to set the image when the page loads
+        updateProfileImage();
       </script>
 
       <h2>Current Position</h2>
