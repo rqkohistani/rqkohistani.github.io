@@ -204,6 +204,78 @@
           display: none;
         }
       }
+      /* General landscape orientation styles */
+      @media (orientation: landscape) {
+        body {
+          font-size: 1.1em; /* Slightly larger font for better readability */
+        }
+
+        .left-fixed,
+        .right-fixed {
+          height: calc(
+            100vh - 4em
+          ); /* Ensure fixed elements fit within viewport height */
+        }
+
+        .center-scrolling {
+          margin-left: 240px; /* Increased margin for better layout */
+          margin-right: 340px;
+          padding: 2.5em; /* Slightly adjust padding */
+        }
+
+        .top-nav .links a {
+          font-size: 1rem; /* Adjust link size for readability */
+        }
+      }
+
+      /* Landscape orientation for smaller screens */
+      @media (max-width: 1000px) and (orientation: landscape) {
+        .right-fixed {
+          display: none;
+        }
+
+        .center-scrolling {
+          margin-left: 230px; /* Left margin for smaller devices */
+          margin-right: 0;
+          padding: 2em;
+        }
+      }
+      /* Landscape orientation for smaller screens */
+      @media (max-width: 665px) and (orientation: landscape) {
+        .left-fixed,
+        .right-fixed {
+          display: none;
+        }
+
+        .center-scrolling {
+          margin-left: 10px; /* Left margin for smaller devices */
+          margin-right: 0;
+          padding: 1em;
+          margin-top: 5em;
+        }
+        .top-nav .links a {
+          font-size: 0.9rem; /* Reduce link size for compact view */
+        }
+      }
+
+      /* Landscape orientation for very small screens (mobile) */
+      @media (max-width: 600px) and (orientation: landscape) {
+        .left-fixed,
+        .right-fixed {
+          display: none;
+        }
+
+        .center-scrolling {
+          margin: 0;
+          margin-top: 5em;
+
+          padding: 1em;
+        }
+
+        .top-nav .links a {
+          font-size: 0.9rem; /* Reduce link size for compact view */
+        }
+      }
 
       img#profileImg {
         display: block;
@@ -392,44 +464,7 @@
         >
       </div>
     </div>
-<!--
-    <script>
-       // Function to update the current time
-       function updateTime() {
-         const timeEl = document.getElementById("time");
-         const now = new Date();
-         const timeString = now.toLocaleTimeString(); // Format: HH:MM:SS
-         timeEl.textContent = `Current Time: ${timeString}`;
-       }
 
-       // Update the time every second
-       setInterval(updateTime, 1000);
-
-       // Initial call to display time immediately on load
-       updateTime();
-
-       // Function to set a customizable greeting based on the time of day
-       function setGreeting() {
-         const greetingEl = document.getElementById("greeting");
-         const now = new Date();
-         const hour = now.getHours();
-
-         let greeting = "Hello!";
-         if (hour >= 5 && hour < 12) {
-           greeting = "Good Morning!";
-         } else if (hour >= 12 && hour < 18) {
-           greeting = "Good Afternoon!";
-         } else {
-           greeting = "Good Evening!";
-         }
-
-         greetingEl.textContent = greeting;
-       }
-
-       // Set greeting on page load
-       setGreeting();
-    </script> -->
-    
     <script>
       function setGreeting() {
         const greetingEl = document.getElementById("greeting");
