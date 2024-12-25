@@ -39,6 +39,15 @@
         margin-left: 1em;
         color: #00dd00;
         text-decoration: none;
+        /* Prevent text wrapping */
+        white-space: nowrap;
+
+        /* Handle overflow gracefully */
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        /* Optional: Ensure consistent spacing */
+        padding: 0 0.5em;
       }
       .top-nav .links a:hover {
         color: #00ff00;
