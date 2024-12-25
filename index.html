@@ -285,6 +285,7 @@
         class="custom-greeting"
         style="margin-top: 20px; text-align: center; font-size: 1.2em"
       >
+      <img id="profileImg" alt="Profile placeholder" />
         <p id="greeting" style="font-weight: bold">Hello!</p>
       </div>
     </div>
@@ -325,7 +326,23 @@
       // Set greeting on page load
       setGreeting();
     </script>
+    <script>
+      const profileImgEl = document.getElementById("profileImg");
 
+      // Function to update the image with a new random seed
+      function updateProfileImage() {
+        const randomSeed = Math.random().toString(36).substring(2);
+        profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
+      }
+
+      // Call the function every 5 seconds
+      setInterval(updateProfileImage, 5000);
+
+      // Initial call to set the image when the page loads
+      updateProfileImage();
+    </script>
+
+    <!-- END OF LEFT COLUMN -->
     <!-- CENTER COLUMN -->
     <div class="center-scrolling">
       <h1 id="profile-summary">Hey there! I'm Rashed Qazizada.</h1>
@@ -517,8 +534,8 @@
 
     <!-- RIGHT COLUMN -->
     <div class="right-fixed">
-      <img id="profileImg" alt="Profile placeholder" />
-      <!--
+       <!--<img id="profileImg" alt="Profile placeholder" />
+     
       <script>
         // Generate random placeholder
         const profileImgEl = document.getElementById("profileImg");
@@ -526,22 +543,6 @@
         profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
       </script>
       -->
-
-      <script>
-        const profileImgEl = document.getElementById("profileImg");
-
-        // Function to update the image with a new random seed
-        function updateProfileImage() {
-          const randomSeed = Math.random().toString(36).substring(2);
-          profileImgEl.src = `https://robohash.org/${randomSeed}.png`;
-        }
-
-        // Call the function every 5 seconds
-        setInterval(updateProfileImage, 5000);
-
-        // Initial call to set the image when the page loads
-        updateProfileImage();
-      </script>
 
       <h2>Current Position</h2>
       <div class="updates">
