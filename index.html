@@ -54,14 +54,15 @@
 
       .left-fixed {
         position: fixed;
-        top: 4em;
-        left: 0;
+        top: 7em;
+        left: 1em;
         width: 220px;
         padding: 1em;
         border-right: 1px solid #333;
         height: calc(100vh - 4em);
         overflow-y: auto;
         background-color: #0f0f2f;
+        font-size: 0.7em;
       }
 
       .left-fixed h2 {
@@ -284,8 +285,8 @@
         display: block;
         margin-top: 3em;
         margin-bottom: 2em;
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
         border-radius: 20%;
         margin-left: 60px;
         box-shadow: 0 0 10px #00ff00;
@@ -355,6 +356,7 @@
         text-align: center;
         text-decoration: none;
         cursor: pointer;
+        margin-bottom: 80px;
       }
 
       #themeToggle:hover {
@@ -476,11 +478,11 @@
 
         let greeting = "Hello!";
         if (hour >= 5 && hour < 12) {
-          greeting = "Hello! Good Morning";
+          greeting = "Hello! and Good Morning";
         } else if (hour >= 12 && hour < 18) {
-          greeting = "Hello! Good Afternoon";
+          greeting = "Hello! and Good Afternoon";
         } else {
-          greeting = "Hello! Good Evening";
+          greeting = "Hello! and Good Evening";
         }
         greetingEl.textContent = greeting;
       }
