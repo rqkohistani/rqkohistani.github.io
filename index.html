@@ -519,11 +519,12 @@
       <hr />
       <h2>Profile Summary</h2>
       <p>
-        I'm an enthusiastic and dedicated software engineer with over 3 years of
-        experience in backend and full-stack development. Skilled in
-        <strong>ASP.NET</strong>, <strong>Node.js</strong>,
-        <strong>SQL</strong>, and <strong>PL/SQL</strong>, I thrive in agile
-        environments and am continually expanding my technical expertise. With a
+        I'm an enthusiastic and dedicated software engineer with
+        <span id="dynamicExperience">over 3+ years</span> of experience in
+        backend and full-stack development. Skilled in <strong>ASP.NET</strong>,
+        <strong>Node.js</strong>, <strong>SQL</strong>, and
+        <strong>PL/SQL</strong>, I thrive in agile environments and am
+        continually expanding my technical expertise. With a
         <em>Certified ScrumMaster®</em> certification, a bachelor’s degree in
         software technology, and a passion for problem-solving, I’m looking to
         join a forward-thinking organization—ideally helping build digital
@@ -846,6 +847,35 @@
         const newTheme = currentTheme === "light" ? "dark" : "light";
         setTheme(newTheme);
       });
+    </script>
+    <script>
+      function updateExperience() {
+        const startDate = new Date("2021-11-23"); // Adjust to your actual starting date
+        const now = new Date();
+        const experienceInMillis = now - startDate;
+
+        // Calculate full years and dynamically determine the "3+" style
+        const years = Math.floor(
+          experienceInMillis / (1000 * 60 * 60 * 24 * 365)
+        );
+        const dynamicYears = `${years}+ years`;
+
+        // Calculate total days
+        const days = Math.floor(experienceInMillis / (1000 * 60 * 60 * 24));
+
+        // Calculate ticking seconds
+        const seconds = Math.floor(experienceInMillis / 1000);
+
+        // Update the dynamic experience element
+        const experienceElement = document.getElementById("dynamicExperience");
+        experienceElement.innerText = `over ${dynamicYears}, ${days} days (${seconds.toLocaleString()} seconds)`;
+      }
+
+      // Update every second
+      setInterval(updateExperience, 1000);
+
+      // Initial call to display experience on page load
+      updateExperience();
     </script>
   </body>
 </html>
