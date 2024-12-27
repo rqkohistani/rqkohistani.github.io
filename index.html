@@ -713,7 +713,14 @@
       <h2>Current Position</h2>
       <div class="updates">
         <!-- <h4>Framtiden AB :</h4>-->
-        <h4>Consultant | INTER IKEA</h4>
+        <h4>
+          <a
+            href="https://www.inter.ikea.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Consultant | @INTER <span id="dynamicTypingEffect"> IKEA</span></a
+          >
+        </h4>
         <p>
           Serving as a Software Engineer Consultant since March 2024, focusing
           on .NET and SQL-based labeling systems. Responsible for maintaining
@@ -877,6 +884,62 @@
 
       // Initial call to display experience on page load
       updateExperience();
+    </script>
+    <script>
+      // Words for the typing effect (just the "INTER IKEA" part)
+      const uniqueTypedWords = ["IKEA"];
+      let uniqueTypedIndex = 0; // which word in uniqueTypedWords
+      let uniqueCharIndex = 0; // which character within that word
+      let uniqueIsErasing = false;
+
+      const dynamicTypingEffectEl = document.getElementById(
+        "dynamicTypingEffect"
+      );
+
+      // Speeds (ms)
+      const uniqueTypingSpeed = 60;
+      const uniqueErasingSpeed = 50;
+
+      // Pause times (ms)
+      const uniquePauseBeforeErasing = 1000; // after the word is fully typed
+      const uniquePauseBeforeTyping = 400; // after the word is fully erased
+
+      function uniqueLoopType() {
+        const currentUniqueWord = uniqueTypedWords[uniqueTypedIndex];
+
+        if (!uniqueIsErasing && uniqueCharIndex < currentUniqueWord.length) {
+          // Typing forward
+          dynamicTypingEffectEl.textContent = currentUniqueWord.slice(
+            0,
+            uniqueCharIndex + 1
+          );
+          uniqueCharIndex++;
+          setTimeout(uniqueLoopType, uniqueTypingSpeed);
+        } else if (
+          !uniqueIsErasing &&
+          uniqueCharIndex === currentUniqueWord.length
+        ) {
+          // Done typing this word, pause, then erase
+          uniqueIsErasing = true;
+          setTimeout(uniqueLoopType, uniquePauseBeforeErasing);
+        } else if (uniqueIsErasing && uniqueCharIndex > 0) {
+          // Erasing backward
+          dynamicTypingEffectEl.textContent = currentUniqueWord.slice(
+            0,
+            uniqueCharIndex - 1
+          );
+          uniqueCharIndex--;
+          setTimeout(uniqueLoopType, uniqueErasingSpeed);
+        } else if (uniqueIsErasing && uniqueCharIndex === 0) {
+          // Done erasing this word, move to next
+          uniqueIsErasing = false;
+          uniqueTypedIndex = (uniqueTypedIndex + 1) % uniqueTypedWords.length;
+          setTimeout(uniqueLoopType, uniquePauseBeforeTyping);
+        }
+      }
+
+      // Start the type/erase cycle
+      uniqueLoopType();
     </script>
   </body>
 </html>
