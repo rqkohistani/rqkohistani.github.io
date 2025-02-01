@@ -459,6 +459,7 @@
         class="custom-greeting"
         style="margin-top: 20px; text-align: center; font-size: 0.8em"
       >
+        <pre id="datetime" style="text-align: left; font-size: 1.2em"></pre>
         <img id="profileImg" alt="Profile placeholder" />
         <p id="greeting" style="font-weight: bold">Hello!</p>
         <a
@@ -469,6 +470,67 @@
         >
       </div>
     </div>
+    <script>
+      // Helper function to add the proper ordinal suffix (st, nd, rd, th)
+      function getOrdinal(n) {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+      }
+
+      function updateTime() {
+        const now = new Date();
+
+        // Format the time to display hours, minutes, and seconds in 24-hour format
+        const timeOptions = {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        const timeString = now.toLocaleTimeString([], timeOptions);
+
+        // Arrays for abbreviated day and month names (in lowercase)
+        const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+        const months = [
+          "jan",
+          "feb",
+          "mar",
+          "apr",
+          "may",
+          "jun",
+          "jul",
+          "aug",
+          "sep",
+          "oct",
+          "nov",
+          "dec",
+        ];
+
+        // Get day name, day of month with ordinal, and month name
+        const dayName = days[now.getDay()];
+        const dayOfMonth = getOrdinal(now.getDate());
+        const monthName = months[now.getMonth()];
+
+        // Create the formatted date string, e.g., "sun,14th jan"
+        const dateString = `${dayName},${dayOfMonth} ${monthName}`;
+
+        // Build an HTML string with red keys and blue values
+        const html = `{
+&nbsp;&nbsp;<span style="color: #00ff00;">"date"</span>: <span style="font-size: 1.2em;">"${dateString}"</span>,
+&nbsp;&nbsp;<span style="color: #00ff00;">"time"</span>: <span style="font-size: 1.2em ">"${timeString}"</span>
+}`;
+
+        // Display the colored JSON-like object in the <pre> element
+        document.getElementById("datetime").innerHTML = html;
+      }
+
+      // Update the time every second
+      setInterval(updateTime, 1000);
+
+      // Initial call to display time on page load
+      updateTime();
+    </script>
 
     <script>
       function setGreeting() {
@@ -857,7 +919,7 @@
     </script>
     <script>
       function updateExperience() {
-        const startDate = new Date("2021-11-23"); 
+        const startDate = new Date("2021-11-23");
         const now = new Date();
         const experienceInMillis = now - startDate;
 
